@@ -1,0 +1,7 @@
+PROJECT_NAME = foo
+
+DATASET = /home/user1/Datasets/
+
+# Remote CONTAINER_DISPLAY = 172.28.XX.XX:XX
+# Local  CONTAINER_DISPLAY =:1 
+CONTAINER_DISPLAY =:1

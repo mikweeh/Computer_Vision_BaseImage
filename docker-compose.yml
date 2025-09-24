@@ -1,0 +1,31 @@
+services:
+  dev_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    image: py311_cuda124_dev_img
+    container_name: ${PROJECT_NAME}-dev
+    environment:
+      - DISPLAY=$CONTAINER_DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=/home/appuser/.Xauthority
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./:/ws
+      - ${DATASET}:/ws/dataset:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${HOME}/.Xauthority:/home/appuser/.Xauthority:rw
+    command: /bin/bash
+    stdin_open: true
+    tty: true
