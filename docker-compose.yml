@@ -6,12 +6,12 @@ services:
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
-    image: py311_cuda124_dev_img
+    image: cv-baseimage-01
     container_name: ${PROJECT_NAME}-dev
     environment:
       - DISPLAY=$CONTAINER_DISPLAY
       - QT_X11_NO_MITSHM=1
-      - XAUTHORITY=/home/appuser/.Xauthority
+      - XAUTHORITY=/home/rosuser/.Xauthority
     deploy:
       resources:
         reservations:
@@ -22,10 +22,10 @@ services:
     ports:
       - "5678:5678"
     volumes:
-      - ./:/ws
-      - ${DATASET}:/ws/dataset:rw
+      - ./:/home/rosuser/repo
+      - ${DATASET}:/home/rosuser/repo/dataset:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ${HOME}/.Xauthority:/home/appuser/.Xauthority:rw
+      - ${HOME}/.Xauthority:/home/rosuser/.Xauthority:rw
     command: /bin/bash
     stdin_open: true
     tty: true
