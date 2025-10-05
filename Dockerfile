@@ -59,9 +59,6 @@ RUN chown -R $UID:$GID /home/rosuser
 # Switch to non-root user
 USER rosuser
 
-# Expose debugging port
-EXPOSE 5678
-
 CMD ["python", "src/main.py"]
 
 # docker compose build --no-cache

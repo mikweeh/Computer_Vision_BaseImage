@@ -64,7 +64,7 @@ It may contain other folders or files, but this is the basic setup. Here is what
 To implement this setup in a new project, copy the following items to your project folder:
 
 - `docker-compose.yml`
-- `Dockerfile` and `Dockerfile.py311`
+- `Dockerfile`
 - `requirements.txt`
 - Environment variables file `.env`
 - Empty folder named `dataset`
