@@ -75,10 +75,10 @@ To implement this setup in a new project, copy the following items to your proje
 Configure the `.env` file with the following variables:
 
 - `PROJECT_NAME`: Project name that determines the container name.
-- `DATASET_PATH`: Path where the dataset is stored on the host (e.g., `/home/azken/bagfiles/CABRERA`). It is mounted as read-only in the container
+- `DATASET`: Path where the dataset is stored on the host (e.g., `/home/azken/bagfiles/CABRERA`). It is mounted in the container as read/write bind mount, so that any changes you do are also done in the original folder outside the container.
 - `CONTAINER_DISPLAY`: Value of the DISPLAY variable to export images
   - With AnyDesk or local: usually `:1` (or `:0`)
-  - With SSH: Use the host IP address with the port you prefer from 15 to 50 (e.g., `172.XX.XX.XX:20`, example choosing port 20). Remember this choice.
+  - With SSH: Use the host IP address with the port you prefer from 15 to 50 (e.g., `172.XX.XX.XX:30`, example choosing port 30). Remember this choice.
 
 You can also add variables `GID` and `UID` if you want.
 

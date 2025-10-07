@@ -25,7 +25,7 @@ services:
       - ./:/home/rosuser/repo
       - ${DATASET}:/home/rosuser/repo/dataset:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ${XAUTHORITY}:/home/rosuser/.Xauthority:rw
+      - ${XAUTHORITY:-/run/user/1000/gdm/Xauthority}:/home/rosuser/.Xauthority:rw
     command: /bin/bash
     stdin_open: true
     tty: true
